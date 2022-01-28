@@ -23,9 +23,8 @@ TEST = 35
 
 all: lib a
 
-a: lib head manl mana bonus
+a: lib head manl mana lib_b bonus
 
-# m: head manl mana
 m: lib head manl mana
 
 manl: manlhead
@@ -40,7 +39,7 @@ mana: manahead
 		((NUM = NUM + 1)) ; \
     done
 
-b: head bonus
+b: lib_b head bonus
 
 bonus: bonhead
 	@NUM=$(BON_START) ; while [[ $$NUM -le $(BON_END) ]] ; do \
@@ -65,6 +64,9 @@ bonhead:
 	@rm frame.out
 
 lib:
+	make -C $(PROJECT)
+	
+lib_b:
 	make bonus -C $(PROJECT)
 
 test: lib head t
