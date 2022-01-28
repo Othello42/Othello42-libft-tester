@@ -13,7 +13,7 @@ Adjust PATH in h_function_names.h to where your source files are.
 
 
 
-## Running:
+## Running
 Test everything:	make
 Test mandatory:		make m
 Test bonus:		make b
