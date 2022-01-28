@@ -23,7 +23,7 @@ TEST = 1
 
 all: a
 
-a: lib lib_b head manl mana bonus
+a: lib head manl mana bonus
 
 m: lib head manl mana
 
@@ -39,9 +39,9 @@ mana: manahead
 		((NUM = NUM + 1)) ; \
     done
 
-b: lib_b head bonus
+b:  lib_b head  bonus
 
-bonus: bonhead
+bonus: bonhead lib_b
 	@NUM=$(BON_START) ; while [[ $$NUM -le $(BON_END) ]] ; do \
 		$(CC) $(CFLAGS) main.c test_bonus.c utils.c -L$(PROJECT) -lft -D TEST=$$NUM -o test.out && ./test.out; \
 		((NUM = NUM + 1)) ; \
