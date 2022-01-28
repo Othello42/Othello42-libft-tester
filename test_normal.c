@@ -290,6 +290,7 @@ void	check_ft_strlen(void)
 	check_ft_strlen_2("z\31m");
 	check_ft_strlen_2("\127\127\127");
 	check_ft_strlen_2("Lorem\200ipsum");
+	printf("\n\t\t");
 	check_ft_strlen_2("\n\n\f\r\t");
 	check_ft_strlen_2("   ");
 }
@@ -837,6 +838,7 @@ void	check_ft_memchr(void)
 	check_ft_memchr_2("", '\0', 42);
 	check_ft_memchr_2("Lorem ipsum", 'o' + 128, 42);
 	check_ft_memchr_2("Lorem ipsum", 'o' + 256, 42);
+	printf("\n\t\t");
 	check_ft_memchr_2("Lorem ipsum", 'o' + 7897, 42);
 
 }
@@ -926,8 +928,8 @@ void	check_ft_strnstr(void)
 		check_ft_strnstr_2("LLLorem ipsum", "Lorem", 42);
 		check_ft_strnstr_2("Lorem ipsum dolor sit amet", "", 42);
 		check_ft_strnstr_2("", "dolor", 42);
+		printf("\n\t\t");
 		check_ft_strnstr_2("", "", 42);
-
 	}
 	else
 		printf(C_RED"function not found in linux"C_RESET" ");
@@ -972,8 +974,8 @@ void	check_ft_atoi(void)
 	check_ft_atoi_2("\t 1234");
 	check_ft_atoi_2("\t\v\n\f\r 1234");
 	check_ft_atoi_2("+-1234");
-	printf("\n\t\t");
 	check_ft_atoi_2("-+1234");
+	printf("\n\t\t");
 	check_ft_atoi_2("1234d23498");
 	check_ft_atoi_2("1234-8976");
 	check_ft_atoi_2("1234+9856");

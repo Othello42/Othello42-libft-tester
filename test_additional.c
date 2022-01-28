@@ -25,6 +25,7 @@ void	check_ft_substr(void)
 	check_ft_substr_2("", 10, 0, "");
 	check_ft_substr_2("", 0, 10, "");
 	check_ft_substr_2("", 10, 10, "");
+	printf("\n\t\t");
 	// check_prot_ft_substr();
 }
 
