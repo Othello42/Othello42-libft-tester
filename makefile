@@ -21,11 +21,11 @@ BON_START = 35
 BON_END = 43
 TEST = 1
 
-all: a
+all: libre a
 
-a: lib head manl mana bonus
+a: libman head manl mana bonus
 
-m: lib head manl mana
+m: libman head manl mana
 
 manl: manlhead
 	@NUM=$(MANL_START) ; while [[ $$NUM -le $(MANL_END) ]] ; do \
@@ -39,9 +39,9 @@ mana: manahead
 		((NUM = NUM + 1)) ; \
     done
 
-b:  lib_b head  bonus
+b:  libbon head bonus
 
-bonus: bonhead lib_b
+bonus: bonhead libbon
 	@NUM=$(BON_START) ; while [[ $$NUM -le $(BON_END) ]] ; do \
 		$(CC) $(CFLAGS) main.c test_bonus.c utils.c -L$(PROJECT) -lft -D TEST=$$NUM -o test.out && ./test.out; \
 		((NUM = NUM + 1)) ; \
@@ -63,13 +63,16 @@ bonhead:
 	@$(CC) $(CFLAGS) frame.c -D HEAD=3 -o frame.out && ./frame.out
 	@rm frame.out
 
-lib:
+libre:
+	@make re -C $(PROJECT)
+
+libman:
 	@make -C $(PROJECT)
 	
-lib_b:
+libbon:
 	@make bonus -C $(PROJECT)
 
-test: lib lib_b head t
+test: libman libbon libbon head t
 
 t: 
 	@NUM=$(TEST) ; while [[ $$NUM -le $(TEST) ]] ; do \

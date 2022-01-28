@@ -15,6 +15,7 @@ Adjust PATH in h_function_names.h to where your source files are.
 
 ## Running
 Test everything:	make  
+Test without recompile	make a. 
 Test mandatory:		make m  
 Test bonus:		make b  
 Test specific:		Adjust TEST (number can be found in h_function_names.h)  
