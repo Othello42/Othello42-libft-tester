@@ -21,9 +21,9 @@ BON_START = 35
 BON_END = 43
 TEST = 1
 
-all: lib a
+all: a
 
-a: lib head manl mana lib_b bonus
+a: lib lib_b head manl mana bonus
 
 m: lib head manl mana
 
@@ -64,12 +64,12 @@ bonhead:
 	@rm frame.out
 
 lib:
-	make -C $(PROJECT)
+	@make -C $(PROJECT)
 	
 lib_b:
-	make bonus -C $(PROJECT)
+	@make bonus -C $(PROJECT)
 
-test: lib head t
+test: lib lib_b head t
 
 t: 
 	@NUM=$(TEST) ; while [[ $$NUM -le $(TEST) ]] ; do \
