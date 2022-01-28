@@ -1,9 +1,0 @@
-ft_strdup
-Possible illegal function found.
-Found use of strdup
-r	*strdup;
-
-	size = ft_strlen(s);
-	strdup = (char *)ft_calloc((size + 1), sizeof(char));
-	if (s
-
