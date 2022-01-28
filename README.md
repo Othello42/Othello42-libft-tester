@@ -2,7 +2,7 @@
 
 
 
-Setting up:
+## Setting up
 Tester is setup to run in a directory NEXT to your libft directory.
 Here it looks for the makefile and the libft.a file
 Adjust PROJECT if it is elsewhere.
@@ -13,7 +13,7 @@ Adjust PATH in h_function_names.h to where your source files are.
 
 
 
-Running:
+## Running:
 Test everything:	make
 Test mandatory:		make m
 Test bonus:		make b
