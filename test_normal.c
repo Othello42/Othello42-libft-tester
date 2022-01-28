@@ -10,9 +10,10 @@
 
 #include <ctype.h> //isalpha, isdigit, isalnum, isascii, isprint, toupper, tolower
 #include <string.h> //strlen, memset, memcpy, memmove, strchr, strrchr, strncmp, memchr, memcmp, strdup
+					//strlcpy, strlcat, strnstr (not found in linux)
 #include <strings.h> //bzero
 #include <stdlib.h> //atoi, calloc
-//not found: strlcpy, strlcat, strnstr (all part of string.h)
+
 
 //TEST == 1
 void	check_ft_isalpha(void)

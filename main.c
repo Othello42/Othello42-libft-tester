@@ -10,6 +10,19 @@
 #include <stdlib.h> //system
 #include <string.h> //strcmp
 
+/* include sandbox NULL protection check for
+ft_substr(NULL, 1, 1);
+ft_strjoin(NULL, NULL);
+ft_strtrim(NULL, "");
+ft_split(NULL, ' ');
+ft_strmapi(NULL, util_mapi);
+ft_striteri(NULL, f);
+ft_putstr_fd(NULL, fd);
+ft_putendl_fd(NULL, fd);
+ft_lstiter(NULL, util_iter);
+ft_lstmap(NULL, util_map, util_free);
+*/
+
 void	check_forbidden(void);
 
 int	main(void)
