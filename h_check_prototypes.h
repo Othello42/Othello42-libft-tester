@@ -52,6 +52,7 @@ void	check_ft_strnstr(void);
 void	check_ft_strnstr_2(const char *haystack, const char *needle, size_t len);
 void	check_ft_atoi(void);
 void	check_ft_atoi_2(const char *str);
+void	check_ft_atoi_3(const char *str);
 void	check_ft_calloc(void);
 void	check_ft_calloc_2(size_t count, size_t size);
 void	check_ft_strdup(void);

@@ -977,12 +977,12 @@ void	check_ft_atoi(void)
 	check_ft_atoi_2("1234d23498");
 	check_ft_atoi_2("1234-8976");
 	check_ft_atoi_2("1234+9856");
-	check_ft_atoi_2("-9999999999");
-	check_ft_atoi_2("9999999999");
-	check_ft_atoi_2("-9223372036854775808");
-	check_ft_atoi_2("9223372036854775807");
-	check_ft_atoi_2("-9223372036854775809");
-	check_ft_atoi_2("9223372036854775808");
+	check_ft_atoi_3("-9999999999");
+	check_ft_atoi_3("9999999999");
+	check_ft_atoi_3("-9223372036854775808");
+	check_ft_atoi_3("9223372036854775807");
+	check_ft_atoi_3("-9223372036854775809");
+	check_ft_atoi_3("9223372036854775808");
 }
 
 void	check_ft_atoi_2(const char *str)
@@ -999,6 +999,28 @@ void	check_ft_atoi_2(const char *str)
 		fd = errorlog_fd(1);
 		dprintf(fd, NAME"\n");
 		dprintf(fd, "Converting string '%s' into integer.\n", str);
+		dprintf(fd, "atoi returns:\t\t%i\n", check);
+		dprintf(fd, "ft_atoi returns:\t%i\n", i);
+		dprintf(fd, "\n\n");
+	}
+	else
+		printf(C_GREEN"[OK]"C_RESET" ");
+}
+
+void	check_ft_atoi_3(const char *str)
+{
+	int	i;
+	int	check;
+	int	fd;
+
+	check = atoi(str);
+	i = ft_atoi(str);
+	if (check != i)
+	{
+		printf(C_ORANGE"[KO]"C_RESET" ");
+		fd = errorlog_fd(1);
+		dprintf(fd, NAME"\n");
+		dprintf(fd, "Converting edge-case string '%s' into integer.\n", str);
 		dprintf(fd, "atoi returns:\t\t%i\n", check);
 		dprintf(fd, "ft_atoi returns:\t%i\n", i);
 		dprintf(fd, "\n\n");
