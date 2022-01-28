@@ -19,6 +19,7 @@ int	main(void)
 		printf("\n");
 		printf(C_BLUE"[LK]"C_RESET"\tTest contains no leaks.\n");
 		printf(C_ORANGE"[LK]"C_RESET"\tFunction leaks at some point.\n");
+		printf(C_YELLOW"[CHECK]"C_RESET"\tCheck for possible error. Such as illegal function.\n");
 		printf("\n");
 		printf("Read "C_BLUE"errorlog.txt"C_RESET" for more information.\n");
 		fd = open("errorlog.txt", O_TRUNC | O_CREAT, 0666);

@@ -34,8 +34,8 @@ int	main(void)
 	else
 		CHECK();
 	close(fd);
-	errorlog_fd(0);
 	leak_check();
 	check_forbidden();
+	errorlog_fd(0);
 	printf("\n");
 }
