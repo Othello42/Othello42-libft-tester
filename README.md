@@ -1,8 +1,18 @@
 # Othello42-libft-tester
 
-Tester is setup to run in a folder next to your libft folder.
+
+
+Setting up:
+Tester is setup to run in a directory NEXT to your libft directory.
+Here it looks for the makefile and the libft.a file
 Adjust PROJECT if it is elsewhere.
 
+Tester is setup to look for .c files in your libft directory.
+Adjust PATH in h_function_names.h to where your source files are.
+
+
+
+Running:
 Test everything:	make
 Test mandatory:		make m
 Test bonus:		make b

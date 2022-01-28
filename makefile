@@ -19,7 +19,7 @@ MANA_START = 24
 MANA_END = 34
 BON_START = 35
 BON_END = 43
-TEST = 35
+TEST = 1
 
 all: lib a
 
