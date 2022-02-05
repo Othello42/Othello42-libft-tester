@@ -342,7 +342,10 @@ void	check_ft_putchar_fd_2(int low, int high)
 		check = check * check_ft_putchar_fd_3(low);
 		if (check == 0 && error == 0)
 		{
-			printf(C_RED"[KO]"C_RESET" ");
+			if (low >= 0 && low <= 127)
+				printf(C_RED"[KO]"C_RESET" ");
+			else
+				printf(C_ORANGE"[KO]"C_RESET" ");
 			error = 1;
 			check = 1;
 		}
