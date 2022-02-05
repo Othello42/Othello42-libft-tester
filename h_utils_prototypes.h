@@ -1,7 +1,15 @@
+void	primary_tests(void);
+void	secundary_tests(void);
+
+void	error(int sig);
+void	error_prot(int sig);
+
 int		errorlog_fd(int command);
 
 void	leak_check(void);
 void	leak_check_apple(int should);
+
+void	check_forbidden(void);
 
 int		util_start_check(char *buff);
 char	*util_forbidden_strstr(char *buff, int i);

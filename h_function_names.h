@@ -1,5 +1,3 @@
-#define PATH "../libft/"
-
 /* MANDATORY - Libc */
 #if (TEST == 1)
 #  define NAME "ft_isalpha"

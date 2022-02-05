@@ -9,35 +9,30 @@
 #include <unistd.h> //close
 #include <stdlib.h> //system
 #include <string.h> //strcmp
-
-/* include sandbox NULL protection check for
-ft_substr(NULL, 1, 1);
-ft_strjoin(NULL, NULL);
-ft_strtrim(NULL, "");
-ft_split(NULL, ' ');
-ft_strmapi(NULL, util_mapi);
-ft_striteri(NULL, f);
-ft_putstr_fd(NULL, fd);
-ft_putendl_fd(NULL, fd);
-ft_lstiter(NULL, util_iter);
-ft_lstmap(NULL, util_map, util_free);
-*/
-
-void	check_forbidden(void);
+#include <signal.h> //signal
 
 int	main(void)
+{
+	signal(SIGSEGV, error);
+	primary_tests();
+	secundary_tests();
+	errorlog_fd(0);
+	printf("\n");
+}
+
+void	primary_tests(void)
 {
 	int	fd;
 
 	printf(C_BOLD NAME C_RESET"\t");
 	if (TEST >= 1 && TEST <= 34)
-		fd = open(PATH FUNCTION, O_RDONLY);
+		fd = open(SRC_PATH FUNCTION, O_RDONLY);
 	else if (TEST >= 35 && TEST <= 43)
 	{
-		fd = open(PATH FUNCTION"_bonus.c", O_RDONLY);
+		fd = open(SRC_PATH FUNCTION"_bonus.c", O_RDONLY);
 		if (fd == -1)
 		{
-			fd = open(PATH FUNCTION".c", O_RDONLY);
+			fd = open(SRC_PATH FUNCTION".c", O_RDONLY);
 			if (fd > 0)
 				printf("File name should be: "C_YELLOW NAME"_bonus.c"C_RESET"\n\t\t");
 		}
@@ -47,8 +42,11 @@ int	main(void)
 	else
 		CHECK();
 	close(fd);
+}
+
+void	secundary_tests(void)
+{
 	leak_check();
 	check_forbidden();
-	errorlog_fd(0);
-	printf("\n");
+	signal(SIGSEGV, error);
 }

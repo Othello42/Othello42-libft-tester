@@ -5,11 +5,11 @@
 ## Setting up
 Tester is setup to run in a directory NEXT to your libft directory.  
 Here it looks for the makefile and the libft.a file.  
-Adjust PROJECT if it is elsewhere.  
+Adjust PROJECT to where libft.a is.  
 
 Tester is setup to look for .c files in your libft directory.  
-[FILE NOT FOUND] errors could be caused by bad PATH directions.  
-Adjust PATH in h_function_names.h to where your source files are.  
+[FILE NOT FOUND] errors could be caused by bad SRC_PATH directions.  
+Adjust SRC_PATH to where your source files are.  
 
 
 

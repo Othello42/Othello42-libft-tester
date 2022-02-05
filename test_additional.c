@@ -26,7 +26,7 @@ void	check_ft_substr(void)
 	check_ft_substr_2("", 0, 10, "");
 	check_ft_substr_2("", 10, 10, "");
 	printf("\n\t\t");
-	// check_prot_ft_substr();
+	check_ft_substr_prot();
 }
 
 void	check_ft_substr_2(char const *s, unsigned int start, size_t len, char const *check)
@@ -50,14 +50,12 @@ void	check_ft_substr_2(char const *s, unsigned int start, size_t len, char const
 	free(ft);
 }
 
-// void	check_prot_ft_substr(void)
-// {
-// 	if (ft_substr(NULL, 1, 1) != NULL)
-// 		printf("not prot\n");
-// 	else
-// 		printf("prot\n");
-// }
-
+void	check_ft_substr_prot(void)
+{
+	signal(SIGSEGV, error_prot);
+	ft_substr(NULL, 1, 1);
+	printf(C_BLUE"[PROT]"C_RESET" ");
+}
 
 //TEST == 25
 void	check_ft_strjoin(void)
@@ -68,6 +66,7 @@ void	check_ft_strjoin(void)
 	check_ft_strjoin_2("\0orem ipsum", "\0olor sit amet", "");
 	check_ft_strjoin_2("", "dolor sit amet", "dolor sit amet");
 	check_ft_strjoin_2("lorem ipsum", "", "lorem ipsum");
+	check_ft_strjoin_prot();
 }
 
 void	check_ft_strjoin_2(char const *s1, char const *s2, char const *check)
@@ -89,6 +88,13 @@ void	check_ft_strjoin_2(char const *s1, char const *s2, char const *check)
 	else
 		printf(C_GREEN"[OK]"C_RESET" ");
 	free(ft);
+}
+
+void	check_ft_strjoin_prot(void)
+{
+	signal(SIGSEGV, error_prot);
+	ft_strjoin(NULL, NULL);
+	printf(C_BLUE"[PROT]"C_RESET" ");
 }
 
 //TEST == 26
@@ -127,6 +133,13 @@ void	check_ft_strtrim_2(const char *s1, char const *set, char const *check)
 	free(ft);
 }
 
+void	check_ft_strtrim_prot(void)
+{
+	signal(SIGSEGV, error_prot);
+	ft_strtrim(NULL, "");
+	printf(C_BLUE"[PROT]"C_RESET" ");
+}
+
 //TEST == 27
 void	check_ft_split(void)
 {
@@ -137,6 +150,7 @@ void	check_ft_split(void)
 	check_ft_split_2("Lorem ipsum    ", ' ');
 	check_ft_split_2("    ", ' ');
 	check_ft_split_2("", ' ');
+	check_ft_split_prot();
 }
 
 void	check_ft_split_2(char const *s, char c)
@@ -187,6 +201,13 @@ void	check_ft_split_2(char const *s, char c)
 	free(ft);
 }
 
+void	check_ft_split_prot(void)
+{
+	signal(SIGSEGV, error_prot);
+	ft_split(NULL, ' ');
+	printf(C_BLUE"[PROT]"C_RESET" ");
+}
+
 //TEST == 28
 void	check_ft_itoa(void)
 {
@@ -231,6 +252,7 @@ void	check_ft_strmapi(void)
 	check_ft_strmapi_2("Lnpbi\033ciklc", "Lorem ipsum");
 	check_ft_strmapi_2("0123465789", "02468;;>@B");
 	check_ft_strmapi_2("", "");
+	check_ft_strmapi_prot();
 }
 
 void	check_ft_strmapi_2(const char *s, const char *check)
@@ -254,11 +276,19 @@ void	check_ft_strmapi_2(const char *s, const char *check)
 	free(str);
 }
 
+void	check_ft_strmapi_prot(void)
+{
+	signal(SIGSEGV, error_prot);
+	ft_strmapi(NULL, util_mapi);
+	printf(C_BLUE"[PROT]"C_RESET" ");
+}
+
 //TEST == 30
 void	check_ft_striteri(void)
 {
 	check_ft_striteri_2("Lnpbi\033ciklc", "Lorem ipsum", util_iteri);
 	check_ft_striteri_2("", "", util_iteri);
+	check_ft_striteri_prot();
 }
 
 void	check_ft_striteri_2(char *s, char *check, void (*f)(unsigned int, char*))
@@ -282,6 +312,13 @@ void	check_ft_striteri_2(char *s, char *check, void (*f)(unsigned int, char*))
 	else
 		printf(C_GREEN"[OK]"C_RESET" ");
 	free(str);
+}
+
+void	check_ft_striteri_prot(void)
+{
+	signal(SIGSEGV, error_prot);
+	ft_striteri(NULL, util_iteri);
+	printf(C_BLUE"[PROT]"C_RESET" ");
 }
 
 //TEST == 31
@@ -349,6 +386,7 @@ void	check_ft_putstr_fd(void)
 	check_ft_putstr_fd_2("string \x01 of \x63 non \x0a ascii \x12 chars\x1d");
 	check_ft_putstr_fd_2("よくやった");
 	check_ft_putstr_fd_2("");
+	check_ft_putstr_fd_prot();
 }
 
 void	check_ft_putstr_fd_2(char *s)
@@ -379,6 +417,13 @@ void	check_ft_putstr_fd_2(char *s)
 		printf(C_GREEN"[OK]"C_RESET" ");
 }
 
+void	check_ft_putstr_fd_prot(void)
+{
+	signal(SIGSEGV, error_prot);
+	ft_putstr_fd(NULL, 1);
+	printf(C_BLUE"[PROT]"C_RESET" ");
+}
+
 //TEST == 33
 void	check_ft_putendl_fd(void)
 {
@@ -387,6 +432,7 @@ void	check_ft_putendl_fd(void)
 	check_ft_putendl_fd_2("string \x01 of \x63 non \x0a ascii \x12 chars\x1d");
 	check_ft_putendl_fd_2("よくやった");
 	check_ft_putendl_fd_2("");
+	check_ft_putendl_fd_prot();
 }
 
 void	check_ft_putendl_fd_2(char *s)
@@ -419,6 +465,13 @@ void	check_ft_putendl_fd_2(char *s)
 	}
 	else
 		printf(C_GREEN"[OK]"C_RESET" ");
+}
+
+void	check_ft_putendl_fd_prot(void)
+{
+	signal(SIGSEGV, error_prot);
+	ft_putendl_fd(NULL, 1);
+	printf(C_BLUE"[PROT]"C_RESET" ");
 }
 
 //TEST == 34

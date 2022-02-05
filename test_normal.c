@@ -14,7 +14,6 @@
 #include <strings.h> //bzero
 #include <stdlib.h> //atoi, calloc
 
-
 //TEST == 1
 void	check_ft_isalpha(void)
 {

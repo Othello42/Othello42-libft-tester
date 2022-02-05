@@ -13,6 +13,72 @@
 #include <string.h> //strcmp, strcpy
 
 /*	=======================================================================  \\
+				Utilities for errors
+\\	=======================================================================  */
+void	error(int sig)
+{
+	char	*error_sig[] ={
+		"SIGHUP", 
+		"SIGINT", 
+		"SIGQUIT", 
+		"SIGILL", 
+		"SIGTRAP", 
+		"SIGABRT", 
+		"SIGEMT", 
+		"SIGFPE", 
+		"SIGKILL", 
+		"SIGBUS", 
+		"SIGSEGV", 
+		"SIGSYS", 
+		"SIGPIPE", 
+		"SIGALRM", 
+		"SIGTERM", 
+		"SIGURG", 
+		"SIGSTOP", 
+		"SIGTSTP", 
+		"SIGCONT", 
+		"SIGCHLD", 
+		"SIGTTIN", 
+		"SIGTTOU", 
+		"SIGIO", 
+		"SIGXCPU", 
+		"SIGXFSZ", 
+		"SIGVTALRM", 
+		"SIGPROF", 
+		"SIGWINCH", 
+		"SIGINFO", 
+		"SIGUSR1", 
+		"SIGUSR2"};
+
+	printf(C_RED"[%s]"C_RESET" ", error_sig[sig - 1]);
+	leak_check();
+	errorlog_fd(0);
+	printf("\n");
+	exit (0);
+}
+
+void	error_prot(int sig)
+{
+	int	fd;
+
+	if (sig == 11)
+	{
+		printf(C_ORANGE"[PROT]"C_RESET" ");
+		fd = errorlog_fd(1);
+		dprintf(fd, NAME"\n");
+		dprintf(fd, "Error with code %i.\n", sig);
+		dprintf(fd, "See 'man signal' for more information.\n");
+		dprintf(fd, "\n\n");
+	}
+	else
+		error(sig);
+	leak_check();
+	errorlog_fd(0);
+	printf("\n");
+	exit (0);
+}
+
+/*	=======================================================================  \\
 				Utilities for errorlog
 \\	=======================================================================  */
 int	errorlog_fd(int command)
@@ -84,7 +150,7 @@ void	check_forbidden(void)
 	int		i;
 	int		start;
 
-	fd = open(PATH FUNCTION, O_RDONLY);
+	fd = open(SRC_PATH FUNCTION, O_RDONLY);
 	read(fd, buff, 0xF00);
 	close (fd);
 	start = util_start_check(buff);

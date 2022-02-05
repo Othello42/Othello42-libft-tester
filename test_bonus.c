@@ -337,6 +337,7 @@ void	check_ft_lstiter(void)
 	check_ft_lstiter_2(1);
 	check_ft_lstiter_2(2);
 	check_ft_lstiter_2(42);
+	check_ft_lstiter_prot();
 }
 
 void	check_ft_lstiter_2(int count)
@@ -379,6 +380,13 @@ int	check_ft_lstiter_3(t_list *lst, t_list *check)
 	return (0);
 }
 
+void	check_ft_lstiter_prot(void)
+{
+	signal(SIGSEGV, error_prot);
+	ft_lstiter(NULL, util_iter);
+	printf(C_BLUE"[PROT]"C_RESET" ");
+}
+
 //TEST == 43
 void	check_ft_lstmap(void)
 {
@@ -387,6 +395,7 @@ void	check_ft_lstmap(void)
 	check_ft_lstmap_2(2);
 	check_ft_lstmap_2(3);
 	check_ft_lstmap_2(42);
+	check_ft_lstmap_prot();
 }
 
 t_list	*ft_lstmap_2(t_list *lst, void *(*f)(void *), void (*del)(void *))
@@ -473,4 +482,11 @@ int check_ft_lstmap_3(t_list *lst, t_list *newlst, t_list *check)
 		newlst = newlst->next;
 	}
 	return (0);
+}
+
+void	check_ft_lstmap_prot(void)
+{
+	signal(SIGSEGV, error_prot);
+	ft_lstmap(NULL, util_map, util_free);
+	printf(C_BLUE"[PROT]"C_RESET" ");
 }
