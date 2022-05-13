@@ -11,16 +11,21 @@
 #include <string.h> //strcmp
 #include <signal.h> //signal
 
+static int	existence_test(void);
+
 int	main(void)
 {
 	signal(SIGSEGV, error);
-	primary_tests();
-	secundary_tests();
+	if (existence_test())
+	{
+		primary_tests();
+		secundary_tests();
+	}
 	errorlog_fd(0);
 	printf("\n");
 }
 
-void	primary_tests(void)
+static int	existence_test(void)
 {
 	int	fd;
 
@@ -38,10 +43,17 @@ void	primary_tests(void)
 		}
 	}
 	if (fd == -1)
+	{
 		printf(C_RED"[FILE NOT FOUND]"C_RESET" ");
-	else
-		CHECK();
+		return (0);
+	}
 	close(fd);
+	return (1);
+}
+
+void	primary_tests(void)
+{
+	CHECK();
 }
 
 void	secundary_tests(void)
