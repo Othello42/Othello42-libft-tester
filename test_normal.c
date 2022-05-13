@@ -502,9 +502,13 @@ void	check_ft_memcpy(void)
 	check_ft_memcpy_2("", "", 23);
 	check_ft_memcpy_2("", "", 0);
 	ft_memcpy(NULL, "1234567890", 0);
+	printf(C_GREEN"[OK]"C_RESET" ");
 	ft_memcpy(NULL, NULL, 7);
+	printf(C_GREEN"[OK]"C_RESET" ");
 	ft_memcpy(NULL, NULL, 0);
+	printf(C_GREEN"[OK]"C_RESET" ");
 	ft_memcpy(((void *)0), ((void *)0), 0);
+	printf(C_GREEN"[OK]"C_RESET" ");
 }
 
 static void	check_ft_memcpy_2(char *dst, char *src, size_t n)
@@ -544,7 +548,7 @@ static void	check_ft_memcpy_3(char *dst1, char *dst2, char *src, size_t n)
 	int	check;
 
 	memcpy(dst1, src, n);
-	memcpy(dst2, src, n);
+	ft_memcpy(dst2, src, n);
 	i = 0;
 	check = 0;
 	while (i < 41)
