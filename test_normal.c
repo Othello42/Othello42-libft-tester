@@ -14,14 +14,26 @@
 #include <strings.h> //bzero
 #include <stdlib.h> //atoi, calloc
 
-//TEST == 1
+
+/* ====================================||==================================== *\
+||																			  ||
+||								   TEST == 1								  ||
+||								   ft_isalpha								  ||
+||																			  ||
+\* ================libft===============||==============©Othello============== */
+
+static void	check_ft_isalpha_2(int low, int high);
+static int	util_ft_check_isalpha(int c);
+
 void	check_ft_isalpha(void)
 {
+	check_ft_isalpha_2(32, 126);
 	check_ft_isalpha_2(0, 127);
 	check_ft_isalpha_2(128, 255);
 	check_ft_isalpha_2(-384, -1);
 }
-void	check_ft_isalpha_2(int low, int high)
+
+static void	check_ft_isalpha_2(int low, int high)
 {
 	int	comp;
 	int	check;
@@ -57,7 +69,7 @@ void	check_ft_isalpha_2(int low, int high)
 		printf(C_GREEN"[OK]"C_RESET" ");
 }
 
-int	util_ft_check_isalpha(int c)
+static int	util_ft_check_isalpha(int c)
 {
 	int	ret;
 
@@ -69,15 +81,25 @@ int	util_ft_check_isalpha(int c)
 	return (ret);
 }
 
-//TEST == 2
+/* ====================================||==================================== *\
+||																			  ||
+||								   TEST == 2								  ||
+||								   ft_isdigit								  ||
+||																			  ||
+\* ================libft===============||==============©Othello============== */
+
+static void	check_ft_isdigit_2(int low, int high);
+static int	util_ft_check_isdigit(int c);
+
 void	check_ft_isdigit(void)
 {
+	check_ft_isdigit_2(32, 126);
 	check_ft_isdigit_2(0, 127);
 	check_ft_isdigit_2(128, 255);
 	check_ft_isdigit_2(-384, -1);
 }
 
-void	check_ft_isdigit_2(int low, int high)
+static void	check_ft_isdigit_2(int low, int high)
 {
 	int	comp;
 	int	check;
@@ -113,7 +135,7 @@ void	check_ft_isdigit_2(int low, int high)
 		printf(C_GREEN"[OK]"C_RESET" ");
 }
 
-int	util_ft_check_isdigit(int c)
+static int	util_ft_check_isdigit(int c)
 {
 	int	ret;
 
@@ -123,15 +145,25 @@ int	util_ft_check_isdigit(int c)
 	return (ret);
 }
 
-//TEST == 3
+/* ====================================||==================================== *\
+||																			  ||
+||								   TEST == 3								  ||
+||								   ft_isalnum								  ||
+||																			  ||
+\* ================libft===============||==============©Othello============== */
+
+static void	check_ft_isalnum_2(int low, int high);
+static int	util_ft_check_isalnum(int c);
+
 void	check_ft_isalnum(void)
 {
+	check_ft_isalnum_2(32, 126);
 	check_ft_isalnum_2(0, 127);
 	check_ft_isalnum_2(128, 255);
 	check_ft_isalnum_2(-384, -1);
 }
 
-void	check_ft_isalnum_2(int low, int high)
+static void	check_ft_isalnum_2(int low, int high)
 {
 	int	comp;
 	int	check;
@@ -167,7 +199,7 @@ void	check_ft_isalnum_2(int low, int high)
 		printf(C_GREEN"[OK]"C_RESET" ");
 }
 
-int	util_ft_check_isalnum(int c)
+static int	util_ft_check_isalnum(int c)
 {
 	int	ret;
 
@@ -179,7 +211,15 @@ int	util_ft_check_isalnum(int c)
 	return (ret);
 }
 
-//TEST == 4
+/* ====================================||==================================== *\
+||																			  ||
+||								   TEST == 4								  ||
+||								   ft_isascii								  ||
+||																			  ||
+\* ================libft===============||==============©Othello============== */
+
+static void	check_ft_isascii_2(int low, int high);
+
 void	check_ft_isascii(void)
 {
 	check_ft_isascii_2(0, 127);
@@ -187,7 +227,7 @@ void	check_ft_isascii(void)
 	check_ft_isascii_2(-384, -1);
 }
 
-void	check_ft_isascii_2(int low, int high)
+static void	check_ft_isascii_2(int low, int high)
 {
 	int	check;
 	int	fd;
@@ -220,8 +260,16 @@ void	check_ft_isascii_2(int low, int high)
 	if (check == 0)
 		printf(C_GREEN"[OK]"C_RESET" ");
 }
+/* ====================================||==================================== *\
+||																			  ||
+||								   TEST == 5								  ||
+||								   ft_isprint								  ||
+||																			  ||
+\* ================libft===============||==============©Othello============== */
 
-//TEST == 5
+static void	check_ft_isprint_2(int low, int high);
+// static int	util_ft_check_isprint(int c);
+
 void	check_ft_isprint(void)
 {
 	check_ft_isprint_2(0, 127);
@@ -229,7 +277,7 @@ void	check_ft_isprint(void)
 	check_ft_isprint_2(-384, -1);
 }
 
-void	check_ft_isprint_2(int low, int high)
+static void	check_ft_isprint_2(int low, int high)
 {
 	int	check;
 	int	fd;
@@ -263,19 +311,27 @@ void	check_ft_isprint_2(int low, int high)
 		printf(C_GREEN"[OK]"C_RESET" ");
 }
 
-int	util_ft_check_isprint(int c)
-{
-	int	ret;
+// static int	util_ft_check_isprint(int c)
+// {
+// 	int	ret;
 
-	ret = isprint(c);
-	if (strcmp(OS, "linux") == 0 && ret == 16384)
-		ret = 1;
-	if (strcmp(OS, "windows 64bit") == 0 && (ret == 1 || ret == 2 || ret == 4 || ret == 16 || ret == 64))
-		ret = 1;
-	return (ret);
-}
+// 	ret = isprint(c);
+// 	if (strcmp(OS, "linux") == 0 && ret == 16384)
+// 		ret = 1;
+// 	if (strcmp(OS, "windows 64bit") == 0 && (ret == 1 || ret == 2 || ret == 4 || ret == 16 || ret == 64))
+// 		ret = 1;
+// 	return (ret);
+// }
 
-//TEST == 6
+/* ====================================||==================================== *\
+||																			  ||
+||								   TEST == 6								  ||
+||								   ft_strlen								  ||
+||																			  ||
+\* ================libft===============||==============©Othello============== */
+
+static void	check_ft_strlen_2(const char *s);
+
 void	check_ft_strlen(void)
 {
 	check_ft_strlen_2("Lorem");
@@ -294,7 +350,7 @@ void	check_ft_strlen(void)
 	check_ft_strlen_2("   ");
 }
 
-void	check_ft_strlen_2(const char *s)
+static void	check_ft_strlen_2(const char *s)
 {
 	int fd;
 
@@ -312,7 +368,15 @@ void	check_ft_strlen_2(const char *s)
 		printf(C_GREEN"[OK]"C_RESET" ");
 }
 
-//TEST == 7
+/* ====================================||==================================== *\
+||																			  ||
+||								   TEST == 7								  ||
+||								   ft_memset								  ||
+||																			  ||
+\* ================libft===============||==============©Othello============== */
+
+static void	check_ft_memset_2(char *b, int c, size_t len);
+
 void	check_ft_memset(void)
 {
 	check_ft_memset_2("Lorem ipsum", 'a', 5);
@@ -321,7 +385,7 @@ void	check_ft_memset(void)
 	check_ft_memset_2("", 'a', 5);
 }
 
-void	check_ft_memset_2(char *b, int c, size_t len)
+static void	check_ft_memset_2(char *b, int c, size_t len)
 {
 	char	b1[99];
 	char	b2[99];
@@ -343,7 +407,15 @@ void	check_ft_memset_2(char *b, int c, size_t len)
 		printf(C_GREEN"[OK]"C_RESET" ");
 }
 
-//TEST == 8
+/* ====================================||==================================== *\
+||																			  ||
+||								   TEST == 8								  ||
+||								    ft_bzero									  ||
+||																			  ||
+\* ================libft===============||==============©Othello============== */
+
+static void	check_ft_bzero_2(char *b, size_t len);
+
 void	check_ft_bzero(void)
 {
 	check_ft_bzero_2("Lorem ipsum", 5);
@@ -351,7 +423,7 @@ void	check_ft_bzero(void)
 	check_ft_bzero_2("", 5);
 }
 
-void	check_ft_bzero_2(char *b, size_t len)
+static void	check_ft_bzero_2(char *b, size_t len)
 {
 	char	b1[99];
 	char	b2[99];
@@ -402,43 +474,112 @@ void	check_ft_bzero_2(char *b, size_t len)
 		printf(C_GREEN"[OK]"C_RESET" ");
 }
 
-//TEST == 9
+/* ====================================||==================================== *\
+||																			  ||
+||								   TEST == 9								  ||
+||								   ft_memcpy								  ||
+||																			  ||
+\* ================libft===============||==============©Othello============== */
+
+static void	check_ft_memcpy_2(char *dst, char *src, size_t n);
+static void	check_ft_memcpy_3(char *dst1, char *dst2, char *src, size_t n);
+
 void	check_ft_memcpy(void)
 {
+	check_ft_memcpy_2("Lorem ipsum", "1234567890", 1);
 	check_ft_memcpy_2("Lorem ipsum", "1234567890", 7);
+	check_ft_memcpy_2("Lorem ipsum", "1234567890", 23);
 	check_ft_memcpy_2("Lorem ipsum", "1234567890", 0);
-	check_ft_memcpy_2("Lorem ipsum", "1234567890", 50);
-	check_ft_memcpy_2("", "1234567890", 7);
 	check_ft_memcpy_2("Lorem ipsum", "", 7);
+	check_ft_memcpy_2("Lorem ipsum", "", 23);
+	check_ft_memcpy_2("Lorem ipsum", "", 0);
+	check_ft_memcpy_2("Lorem ipsum", NULL, 0);
+	check_ft_memcpy_2("", "1234567890", 7);
+	check_ft_memcpy_2("", "1234567890", 23);
+	check_ft_memcpy_2("", "1234567890", 0);
+	printf("\n\t\t");
 	check_ft_memcpy_2("", "", 7);
+	check_ft_memcpy_2("", "", 23);
+	check_ft_memcpy_2("", "", 0);
+	ft_memcpy(NULL, "1234567890", 0);
+	ft_memcpy(NULL, NULL, 7);
+	ft_memcpy(NULL, NULL, 0);
 	ft_memcpy(((void *)0), ((void *)0), 0);
 }
 
-void	check_ft_memcpy_2(char *dst, char *src, size_t n)
+static void	check_ft_memcpy_2(char *dst, char *src, size_t n)
 {
-	char	copy1[99];
-	char	copy2[99];
-	char	copysrc[99];
-	int		fd;
+	char	*dst1;
+	char	*dst2;
+	char	*src1;
 
-	strcpy(copy1, dst);
-	strcpy(copy2, dst);
-	strcpy(copysrc, src);
-	if (strcmp(memcpy(copy1, src, n), memcpy(copy2, src, n)) != 0)
+	dst1 = NULL;
+	dst2 = NULL;
+	src1 = NULL;
+	if (dst != NULL)
+	{
+		dst1 = (char *)ft_calloc(sizeof(char), 42);
+		dst2 = (char *)ft_calloc(sizeof(char), 42);
+		memcpy(dst1, dst, strlen(dst));
+		memcpy(dst2, dst, strlen(dst));
+	}
+	if (src != NULL)
+	{
+		src1 = (char *)ft_calloc(sizeof(char), 42);
+		memcpy(src1, src, strlen(src));
+		src1[21] = '!';
+		src1[22] = '!';
+		src1[23] = '!';
+	}
+	check_ft_memcpy_3(dst1, dst2, src1, n);
+	free(dst1);
+	free(dst2);
+	free(src1);
+}
+
+static void	check_ft_memcpy_3(char *dst1, char *dst2, char *src, size_t n)
+{
+	int	fd;
+	int	i;
+	int	check;
+
+	memcpy(dst1, src, n);
+	memcpy(dst2, src, n);
+	i = 0;
+	check = 0;
+	while (i < 41)
+	{
+		if (dst1[i] != dst2[i])
+		{
+			check = -1;
+			break ;
+		}
+		i++;
+	}
+	if (check == -1)
 	{
 		printf(C_RED"[KO]"C_RESET" ");
 		fd = errorlog_fd(1);
 		dprintf(fd, NAME"\n");
-		dprintf(fd, "Setting the first %li characters from the string to '%s' to string %s\n", n, src, dst);
-		dprintf(fd, "memcpy returns:\t%s\n", copy1);
-		dprintf(fd, "ft_memcpy returns:\t%s\n", copy2);
+		dprintf(fd, "Setting the first %li characters from the string to '%s' to string '%s'\n", n, src, dst1);
+		dprintf(fd, "%14s returns:\t'%s%s'\n", "memcpy", dst1, &dst1[i]);
+		dprintf(fd, "%14s returns:\t'%s%s'\n", "ft_memcpy", dst2, &dst2[i]);
 		dprintf(fd, "\n\n");
 	}
 	else
 		printf(C_GREEN"[OK]"C_RESET" ");
 }
 
-//TEST == 10
+/* ====================================||==================================== *\
+||																			  ||
+||								   TEST == 10								  ||
+||								   ft_memmove								  ||
+||																			  ||
+\* ================libft===============||==============©Othello============== */
+
+static void	check_ft_memmove_2(void *dest, const void *src, size_t n);
+static void	check_ft_memmove_3(void *dest, int pos, size_t n);
+
 void	check_ft_memmove(void)
 {
 	check_ft_memmove_2("0123456789", "Lorem Ipsum", 7);
@@ -453,7 +594,7 @@ void	check_ft_memmove(void)
 	check_ft_memmove_3("Lorem Ipsum", -1, 7);
 }
 
-void	check_ft_memmove_2(void *dest, const void *src, size_t n)
+static void	check_ft_memmove_2(void *dest, const void *src, size_t n)
 {
 	char	copy1[99];
 	char	copy2[99];
@@ -479,7 +620,7 @@ void	check_ft_memmove_2(void *dest, const void *src, size_t n)
 		printf(C_GREEN"[OK]"C_RESET" ");
 }
 
-void	check_ft_memmove_3(void *dest, int pos, size_t n)
+static void	check_ft_memmove_3(void *dest, int pos, size_t n)
 {
 	char	copy1[99];
 	char	copy2[99];
@@ -511,7 +652,15 @@ void	check_ft_memmove_3(void *dest, int pos, size_t n)
 		printf(C_GREEN"[OK]"C_RESET" ");
 }
 
-//TEST == 11
+/* ====================================||==================================== *\
+||																			  ||
+||								   TEST == 11								  ||
+||								   ft_strlcpy								  ||
+||																			  ||
+\* ================libft===============||==============©Othello============== */
+
+static void	check_ft_strlcpy_2(char *dst, const char *src, size_t dstsize);
+
 void	check_ft_strlcpy(void)
 {
 	if (strcmp(OS, "apple") == 0)
@@ -531,7 +680,7 @@ void	check_ft_strlcpy(void)
 		printf(C_RED"function not found in linux"C_RESET" ");	
 }
 
-void	check_ft_strlcpy_2(char *dst, const char *src, size_t dstsize)
+static void	check_ft_strlcpy_2(char *dst, const char *src, size_t dstsize)
 {
 	char	copy1[99];
 	char	copy2[99];
@@ -561,7 +710,15 @@ void	check_ft_strlcpy_2(char *dst, const char *src, size_t dstsize)
 		printf(C_GREEN"[OK]"C_RESET" ");
 }
 
-//TEST == 12
+/* ====================================||==================================== *\
+||																			  ||
+||								   TEST == 12								  ||
+||								   ft_strlcat								  ||
+||																			  ||
+\* ================libft===============||==============©Othello============== */
+
+static void	check_ft_strlcat_2(char *dst, const char *src, size_t dstsize);
+
 void	check_ft_strlcat(void)
 {
 	if (strcmp(OS, "apple") == 0)
@@ -579,7 +736,7 @@ void	check_ft_strlcat(void)
 		printf(C_RED"function not found in linux"C_RESET" "); //windows
 }
 
-void	check_ft_strlcat_2(char *dst, const char *src, size_t dstsize)
+static void	check_ft_strlcat_2(char *dst, const char *src, size_t dstsize)
 {
 	char	copy1[99];
 	char	copy2[99];
@@ -609,7 +766,16 @@ void	check_ft_strlcat_2(char *dst, const char *src, size_t dstsize)
 		printf(C_GREEN"[OK]"C_RESET" ");
 }
 
-//TEST == 13
+/* ====================================||==================================== *\
+||																			  ||
+||								   TEST == 13								  ||
+||								   ft_toupper								  ||
+||																			  ||
+\* ================libft===============||==============©Othello============== */
+
+static void	check_ft_toupper_2(int low, int high);
+static int	util_ft_check_toupper(int c);
+
 void	check_ft_toupper(void)
 {
 	check_ft_toupper_2(0, 127);
@@ -617,7 +783,7 @@ void	check_ft_toupper(void)
 	check_ft_toupper_2(-384, -1);
 }
 
-void	check_ft_toupper_2(int low, int high)
+static void	check_ft_toupper_2(int low, int high)
 {
 	int	comp;
 	int	check;
@@ -651,7 +817,7 @@ void	check_ft_toupper_2(int low, int high)
 		printf(C_GREEN"[OK]"C_RESET" ");
 }
 
-int	util_ft_check_toupper(int c)
+static int	util_ft_check_toupper(int c)
 {
 	int	ret;
 
@@ -661,7 +827,16 @@ int	util_ft_check_toupper(int c)
 	return (ret);
 }
 
-//TEST == 14
+/* ====================================||==================================== *\
+||																			  ||
+||								   TEST == 14								  ||
+||								   ft_tolower								  ||
+||																			  ||
+\* ================libft===============||==============©Othello============== */
+
+static void	check_ft_tolower_2(int low, int high);
+static int	util_ft_check_tolower(int c);
+
 void	check_ft_tolower(void)
 {
 	check_ft_tolower_2(0, 127);
@@ -669,7 +844,7 @@ void	check_ft_tolower(void)
 	check_ft_tolower_2(-384, -1);
 }
 
-void	check_ft_tolower_2(int low, int high)
+static void	check_ft_tolower_2(int low, int high)
 {
 	int	comp;
 	int	check;
@@ -702,7 +877,7 @@ void	check_ft_tolower_2(int low, int high)
 		printf(C_GREEN"[OK]"C_RESET" ");
 }
 
-int	util_ft_check_tolower(int c)
+static int	util_ft_check_tolower(int c)
 {
 	int	ret;
 
@@ -711,7 +886,16 @@ int	util_ft_check_tolower(int c)
 		ret = c;
 	return (ret);
 }
-//TEST == 15
+
+/* ====================================||==================================== *\
+||																			  ||
+||								   TEST == 15								  ||
+||								   ft_strchr								  ||
+||																			  ||
+\* ================libft===============||==============©Othello============== */
+
+static void	check_ft_strchr_2(const char *s, int c);
+
 void	check_ft_strchr(void)
 {
 	check_ft_strchr_2("Lorem ipsum", 'L');
@@ -726,7 +910,7 @@ void	check_ft_strchr(void)
 
 }
 
-void	check_ft_strchr_2(const char *s, int c)
+static void	check_ft_strchr_2(const char *s, int c)
 {
 	char	*ft;
 	char	*check;
@@ -748,7 +932,15 @@ void	check_ft_strchr_2(const char *s, int c)
 		printf(C_GREEN"[OK]"C_RESET" ");
 }
 
-//TEST == 16
+/* ====================================||==================================== *\
+||																			  ||
+||								   TEST == 16								  ||
+||								   ft_strrchr								  ||
+||																			  ||
+\* ================libft===============||==============©Othello============== */
+
+static void	check_ft_strrchr_2(const char *s, int c);
+
 void	check_ft_strrchr(void)
 {
 	check_ft_strrchr_2("Lorem ipsum", 'L');
@@ -763,7 +955,7 @@ void	check_ft_strrchr(void)
 
 }
 
-void	check_ft_strrchr_2(const char *s, int c)
+static void	check_ft_strrchr_2(const char *s, int c)
 {
 	char	*ft;
 	char	*check;
@@ -785,7 +977,15 @@ void	check_ft_strrchr_2(const char *s, int c)
 		printf(C_GREEN"[OK]"C_RESET" ");
 }
 
-//TEST == 17
+/* ====================================||==================================== *\
+||																			  ||
+||								   TEST == 17								  ||
+||								   ft_strncmp								  ||
+||																			  ||
+\* ================libft===============||==============©Othello============== */
+
+static void	check_ft_strncmp_2(const char *s1, const char *s2, size_t n);
+
 void	check_ft_strncmp(void)
 {
 	check_ft_strncmp_2("Lorem ipsum", "Lorem Ipsum", 10);
@@ -801,7 +1001,7 @@ void	check_ft_strncmp(void)
 	check_ft_strncmp_2("", "", 7);
 }
 
-void	check_ft_strncmp_2(const char *s1, const char *s2, size_t n)
+static void	check_ft_strncmp_2(const char *s1, const char *s2, size_t n)
 {
 	int	ft;
 	int	check;
@@ -823,7 +1023,15 @@ void	check_ft_strncmp_2(const char *s1, const char *s2, size_t n)
 		printf(C_GREEN"[OK]"C_RESET" ");
 }
 
-//TEST == 18
+/* ====================================||==================================== *\
+||																			  ||
+||								   TEST == 18								  ||
+||								   ft_memchr								  ||
+||																			  ||
+\* ================libft===============||==============©Othello============== */
+
+static void	check_ft_memchr_2(const char *s, int c, size_t n);
+
 void	check_ft_memchr(void)
 {
 	check_ft_memchr_2("Lorem ipsum", 'L', 10);
@@ -842,7 +1050,7 @@ void	check_ft_memchr(void)
 
 }
 
-void	check_ft_memchr_2(const char *s, int c, size_t n)
+static void	check_ft_memchr_2(const char *s, int c, size_t n)
 {
 	char	*ft;
 	char	*check;
@@ -864,7 +1072,16 @@ void	check_ft_memchr_2(const char *s, int c, size_t n)
 		printf(C_GREEN"[OK]"C_RESET" ");
 }
 
-//TEST == 19
+/* ====================================||==================================== *\
+||																			  ||
+||								   TEST == 19								  ||
+||								   ft_memcmp								  ||
+||																			  ||
+\* ================libft===============||==============©Othello============== */
+
+static void	check_ft_memcmp_2(const char *s1, const char *s2, size_t n);
+static int	utils_ft_memcmp(const char *s1, const char *s2, size_t n);
+
 void	check_ft_memcmp(void)
 {
 	check_ft_memcmp_2("Lorem ipsum", "Lorem Ipsum", 10);
@@ -880,7 +1097,7 @@ void	check_ft_memcmp(void)
 	check_ft_memcmp_2("", "", 7);
 }
 
-void	check_ft_memcmp_2(const char *s1, const char *s2, size_t n)
+static void	check_ft_memcmp_2(const char *s1, const char *s2, size_t n)
 {
 	int	ft;
 	int	check;
@@ -902,7 +1119,7 @@ void	check_ft_memcmp_2(const char *s1, const char *s2, size_t n)
 		printf(C_GREEN"[OK]"C_RESET" ");
 }
 
-int	utils_ft_memcmp(const char *s1, const char *s2, size_t n)
+static int	utils_ft_memcmp(const char *s1, const char *s2, size_t n)
 {
 	if (strcmp(OS, "linux") == 0)
 		return (strncmp(s1, s2, n));
@@ -911,7 +1128,15 @@ int	utils_ft_memcmp(const char *s1, const char *s2, size_t n)
 	return (memcmp(s1, s2, n));
 }
 
-//TEST == 20
+/* ====================================||==================================== *\
+||																			  ||
+||								   TEST == 20								  ||
+||								   ft_strnstr								  ||
+||																			  ||
+\* ================libft===============||==============©Othello============== */
+
+static void	check_ft_strnstr_2(const char *haystack, const char *needle, size_t len);
+
 void	check_ft_strnstr(void)
 {
 	if (strcmp(OS, "apple") == 0)
@@ -934,7 +1159,7 @@ void	check_ft_strnstr(void)
 		printf(C_RED"function not found in linux"C_RESET" ");
 }
 
-void	check_ft_strnstr_2(const char *haystack, const char *needle, size_t len)
+static void	check_ft_strnstr_2(const char *haystack, const char *needle, size_t len)
 {
 	char	*hay;
 	char	*needle1;
@@ -960,7 +1185,16 @@ void	check_ft_strnstr_2(const char *haystack, const char *needle, size_t len)
 	free(hay);
 }
 
-//TEST == 21
+/* ====================================||==================================== *\
+||																			  ||
+||								   TEST == 21								  ||
+||									ft_atoi									  ||
+||																			  ||
+\* ================libft===============||==============©Othello============== */
+
+static void	check_ft_atoi_2(const char *str);
+static void	check_ft_atoi_3(const char *str);
+
 void	check_ft_atoi(void)
 {
 	check_ft_atoi_2("1234");
@@ -986,7 +1220,7 @@ void	check_ft_atoi(void)
 	check_ft_atoi_3("9223372036854775808");
 }
 
-void	check_ft_atoi_2(const char *str)
+static void	check_ft_atoi_2(const char *str)
 {
 	int	i;
 	int	check;
@@ -1008,7 +1242,7 @@ void	check_ft_atoi_2(const char *str)
 		printf(C_GREEN"[OK]"C_RESET" ");
 }
 
-void	check_ft_atoi_3(const char *str)
+static void	check_ft_atoi_3(const char *str)
 {
 	int	i;
 	int	check;
@@ -1030,7 +1264,14 @@ void	check_ft_atoi_3(const char *str)
 		printf(C_GREEN"[OK]"C_RESET" ");
 }
 
-//TEST == 22
+/* ====================================||==================================== *\
+||																			  ||
+||								   TEST == 22								  ||
+||								   ft_calloc								  ||
+||																			  ||
+\* ================libft===============||==============©Othello============== */
+
+static void	check_ft_calloc_2(size_t count, size_t size);
 
 void	check_ft_calloc(void)
 {
@@ -1041,7 +1282,7 @@ void	check_ft_calloc(void)
 	check_ft_calloc_2(42, 0);
 }
 
-void	check_ft_calloc_2(size_t count, size_t size)
+static void	check_ft_calloc_2(size_t count, size_t size)
 {
 	char	*mem1;
 	char	*mem2;
@@ -1109,7 +1350,15 @@ void	check_ft_calloc_2(size_t count, size_t size)
 	free(mem2);
 }
 
-//TEST == 23
+/* ====================================||==================================== *\
+||																			  ||
+||								   TEST == 23								  ||
+||								   ft_strdup								  ||
+||																			  ||
+\* ================libft===============||==============©Othello============== */
+
+static void	check_ft_strdup_2(const char *s);
+
 void	check_ft_strdup(void)
 {
 	check_ft_strdup_2("Lorem ipsum");
@@ -1117,7 +1366,7 @@ void	check_ft_strdup(void)
 	check_ft_strdup_2("");
 }
 
-void	check_ft_strdup_2(const char *s)
+static void	check_ft_strdup_2(const char *s)
 {
 	char	*check;
 	char	*ft;
